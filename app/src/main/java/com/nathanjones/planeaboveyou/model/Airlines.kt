@@ -1,0 +1,62 @@
+package com.nathanjones.planeaboveyou.model
+
+object Airlines {
+    private val airlines: Map<String, String> = mapOf(
+        "AAL" to "American Airlines",
+        "UAL" to "United Airlines",
+        "DAL" to "Delta Air Lines",
+        "SWA" to "Southwest Airlines",
+        "JBU" to "JetBlue Airways",
+        "ASA" to "Alaska Airlines",
+        "FFT" to "Frontier Airlines",
+        "NKS" to "Spirit Airlines",
+        "SKW" to "SkyWest Airlines",
+        "RPA" to "Republic Airways",
+        "ENY" to "Envoy Air",
+        "PDT" to "Piedmont Airlines",
+        "BAW" to "British Airways",
+        "DLH" to "Lufthansa",
+        "AFR" to "Air France",
+        "KLM" to "KLM Royal Dutch",
+        "EZY" to "easyJet",
+        "RYR" to "Ryanair",
+        "UAE" to "Emirates",
+        "QTR" to "Qatar Airways",
+        "SIA" to "Singapore Airlines",
+        "CPA" to "Cathay Pacific",
+        "ANA" to "All Nippon Airways",
+        "JAL" to "Japan Airlines",
+        "ACA" to "Air Canada",
+        "WJA" to "WestJet",
+        "QFA" to "Qantas",
+        "ANZ" to "Air New Zealand",
+        "THY" to "Turkish Airlines",
+        "FDX" to "FedEx Express",
+        "UPS" to "UPS Airlines",
+        "GTI" to "Atlas Air",
+        "VIR" to "Virgin Atlantic",
+        "EIN" to "Aer Lingus",
+        "SAS" to "Scandinavian Airlines",
+        "FIN" to "Finnair",
+        "IBE" to "Iberia",
+        "TAP" to "TAP Air Portugal",
+        "AUA" to "Austrian Airlines",
+        "BEL" to "Brussels Airlines",
+        "SWR" to "Swiss International",
+        "LOT" to "LOT Polish Airlines",
+        "CSN" to "China Southern",
+        "CCA" to "Air China",
+        "CES" to "China Eastern",
+        "KAL" to "Korean Air",
+        "AAR" to "Asiana Airlines",
+        "EVA" to "EVA Air",
+        "THA" to "Thai Airways",
+        "MAS" to "Malaysia Airlines",
+        "GAF" to "German Air Force",
+        "RCH" to "US Air Force"
+    )
+
+    fun nameFor(icaoCode: String): String {
+        return airlines[icaoCode.uppercase()] ?: icaoCode
+    }
+}
