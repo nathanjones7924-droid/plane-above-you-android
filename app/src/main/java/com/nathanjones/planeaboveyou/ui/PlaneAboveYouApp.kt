@@ -60,7 +60,7 @@ fun PlaneAboveYouApp(viewModel: FlightViewModel = viewModel()) {
                 }
             )
         } else {
-            MainScreen(viewModel = viewModel)
+            MainScreen(viewModel = viewModel, onShowOnboardingAgain = { showOnboarding = true })
         }
     }
 }

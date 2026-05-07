@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -15,13 +17,24 @@ android {
         versionName = "1.0"
     }
 
+    val properties = Properties()
+    val localPropsFile = rootProject.file("local.properties")
+    if (localPropsFile.exists()) {
+        localPropsFile.inputStream().use { properties.load(it) }
+    }
+    val mapsApiKey = properties.getProperty("MAPS_API_KEY") ?: "AIzaSyDummyKeyForTestingOnly"
+
     buildTypes {
+        debug {
+            manifestPlaceholders["MAPS_API_KEY"] = mapsApiKey
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            manifestPlaceholders["MAPS_API_KEY"] = mapsApiKey
         }
     }
     compileOptions {

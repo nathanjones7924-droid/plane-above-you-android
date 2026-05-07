@@ -35,7 +35,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("MissingPermission")
 @Composable
-fun MainScreen(viewModel: FlightViewModel) {
+fun MainScreen(viewModel: FlightViewModel, onShowOnboardingAgain: () -> Unit = {}) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val cameraPositionState = rememberCameraPositionState()
@@ -300,7 +300,7 @@ fun MainScreen(viewModel: FlightViewModel) {
         }
     }
 
-    // Settings sheet
+        // Settings sheet
     AnimatedVisibility(
         visible = showSettings,
         enter = fadeIn(),
@@ -309,6 +309,7 @@ fun MainScreen(viewModel: FlightViewModel) {
         SettingsScreen(
             currentFOV = fovMiles,
             onFOVChanged = { viewModel.setFOVMiles(it) },
+            onShowOnboardingAgain = onShowOnboardingAgain,
             onDismiss = { showSettings = false }
         )
     }

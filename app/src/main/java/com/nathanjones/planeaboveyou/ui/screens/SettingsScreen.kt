@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SettingsScreen(currentFOV: Double, onFOVChanged: (Double) -> Unit, onDismiss: () -> Unit) {
+fun SettingsScreen(currentFOV: Double, onFOVChanged: (Double) -> Unit, onDismiss: () -> Unit, onShowOnboardingAgain: () -> Unit = {}) {
     val context = LocalContext.current
     var fovValue by remember { mutableFloatStateOf(currentFOV.toFloat()) }
     var keepScreenAwake by remember {
@@ -128,6 +128,7 @@ fun SettingsScreen(currentFOV: Double, onFOVChanged: (Double) -> Unit, onDismiss
                             .edit()
                             .putBoolean("has_seen_onboarding", false)
                             .apply()
+                        onShowOnboardingAgain()
                         onDismiss()
                     },
                     modifier = Modifier.fillMaxWidth(),
